@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    .w3-card-4
+        header.w3-container.w3-teal
+            h2 #{entidade.NIPC_entidade_comunicante} - #{entidade.entidade_comunicante}
+        br
+        .w3-container.w3-padding
+            table
+                thead
+                    tr
+                        th ID
+                        th Objeto do Contrato
+                        th Data de Celebração do Contrato
+                        th Preço Contratual
+                tbody
+                    each contrato in contratos
+                        tr
+                            td #[a(href=`/${contrato._id}`)= contrato._id]
+                            td= contrato.objectoContrato
+                            td= contrato.dataCelebracaoContrato
+                            td= contrato.precoContratual
+            h4 Somatório do Valor dos Contratos: #{somatorioValorContratos}
+        footer.w3-container.w3-teal
+            h5 #[a(href="/") Voltar à página principal]
